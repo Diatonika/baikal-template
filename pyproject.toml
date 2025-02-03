@@ -27,7 +27,7 @@ allow_zero_version = true
 # Set to true when project is ready for 1.X.X SemVer
 major_on_zero = false
 
-build_command = 'pip install "poetry >= 2.0" "rust-just >= 1.0" && just init-release'
+build_command = 'pip install "poetry >= 2.0" "rust-just >= 1.0" && just init-release && just build'
 build_command_env = [ "NEXUS_READ_USER", "NEXUS_READ_PASS" ]
 
 [tool.semantic_release.branches.main]
