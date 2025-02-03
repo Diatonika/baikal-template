@@ -24,7 +24,7 @@ tag_format = "{version}"
 version_toml = [ "pyproject.toml:project.version" ]
 
 allow_zero_version = true
-# Set to true when project is ready for 1.X.X SemVer
+# When you are ready to release a stable version, set to true and run Python Semantic Release again.
 major_on_zero = false
 
 build_command = 'pip install "poetry >= 2.0" "rust-just >= 1.0" && just init-release && just build'

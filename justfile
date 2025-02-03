@@ -1,6 +1,9 @@
 set dotenv-load := true
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
+# Directories for Linter
+linter-folders := "template"
+
 do-format := "false"
 format-flags := if do-format == "false" { "--diff --color" } else { "" }
 
@@ -13,7 +16,7 @@ default:
 [group("setup")]
 init *sync-options: && (sync sync-options)
     poetry config virtualenvs.in-project true --local
-    poetry config http-basic.baikal-pypi  {{ nexus-read-user }} {{ nexus-read-pass }} --local
+    poetry config http-basic.baikal-pypi {{ nexus-read-user }} {{ nexus-read-pass }} --local
 
 [group("setup")]
 init-dev: init
@@ -41,19 +44,19 @@ build *options:
 
 [group("lint")]
 black: init-dev
-    poetry run black template --config pyproject.toml {{ format-flags }}
+    poetry run black {{ linter-folders }} --config pyproject.toml {{ format-flags }}
 
 [group("lint")]
 flake: init-dev
-    poetry run flake8 template --config .flake8
+    poetry run flake8 {{ linter-folders }} --config .flake8
 
 [group("lint")]
 isort: init-dev
-    poetry run isort template --settings pyproject.toml {{ format-flags }}
+    poetry run isort {{ linter-folders }} --settings pyproject.toml {{ format-flags }}
 
 [group("lint")]
 mypy: init-dev
-    poetry run mypy -p template --config-file pyproject.toml
+    poetry run mypy {{ linter-folders }} --config-file pyproject.toml
 
 [group("lint")]
 format:
