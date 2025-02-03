@@ -24,6 +24,7 @@ tag_format = "{version}"
 version_toml = [ "pyproject.toml:project.version" ]
 
 allow_zero_version = true
+# Set to true when project is ready for 1.X.X SemVer
 major_on_zero = false
 
 build_command = 'pip install "poetry >= 2.0" "rust-just >= 1.0" && just init-release'
