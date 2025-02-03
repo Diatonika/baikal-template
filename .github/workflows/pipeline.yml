@@ -88,13 +88,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: release-wheel
-          path: dist/*.whl
+          path: ${{ github.workspace }}/dist/*.whl
       - name: Upload Dist Artifact
         if: steps.release.outputs.released == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: release-dist
-          path: dist/*.tar.gz
+          path: ${{ github.workspace }}/dist/*.tar.gz
 
   publish:
     name: Publish to PyPI
