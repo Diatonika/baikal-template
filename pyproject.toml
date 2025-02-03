@@ -1,0 +1,71 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
+
+[project]
+authors = [{ name = "Valery Ratsko", email = "<zitrasa@yandex.ru>" }]
+description = "Baikal Template Repository"
+name = "baikal-template"
+version = "0.0.0"
+readme = "README.md"
+requires-python = ">= 3.12"
+
+dependencies = [
+    "dynaconf (>= 3.0, < 4.0)",
+]
+
+[tool.poetry]
+packages = [
+    { include = "template", to = "baikal" }
+]
+
+[tool.semantic_release]
+tag_format = "{version}"
+version_toml = [ "pyproject.toml:project.version" ]
+
+allow_zero_version = true
+major_on_zero = false
+
+build_command = 'pip install "poetry >= 2.0" "rust-just >= 1.0" && just init build'
+build_command_env = [ "NEXUS_READ_USER", "NEXUS_READ_PASS" ]
+
+[tool.semantic_release.branches.main]
+match = "main"
+prerelease_token = "rc"
+prerelease = false
+
+[[tool.poetry.source]]
+name = "baikal-pypi"
+priority = "explicit"
+url = "https://pypi.fury.io/zitrasa/"
+
+[tool.poetry.group.dev.dependencies]
+click = "^8.0"
+python-semantic-release = "^9.0"
+rust-just = "^1.0"
+
+[tool.poetry.group.lint.dependencies]
+black = "^24.0"
+flake8 = "^7.0"
+flake8-bugbear = ">= 24.0.0"
+isort = "^5.0"
+mypy = "^1.0"
+
+# Linter Tools
+
+[tool.black]
+target-version = ["py312"]
+
+[tool.isort]
+lines_between_types = 1
+profile = "black"
+py_version = 312
+
+[tool.mypy]
+exclude = [".venv"]
+python_version = "3.12"
+strict = true
+
+[[tool.mypy.overrides]]
+module = "dynaconf"
+ignore_missing_imports = true
