@@ -11,6 +11,10 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
 
+    env:
+      NEXUS_READ_USER: ${{ secrets.NEXUS_READ_USER }}
+      NEXUS_READ_PASS: ${{ secrets.NEXUS_READ_PASS }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
