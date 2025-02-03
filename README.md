@@ -5,6 +5,7 @@
 Create the following repository GitHub Actions variables:
 
 1. `PYTHON_VERSION`: Python version to set up in `lint` workflow environment.
+2. `PYTHON_APP`: Set to `true` when project is **not** intended to be built as python package.
 
 ## Project Setup ##
 

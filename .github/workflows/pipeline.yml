@@ -79,6 +79,7 @@ jobs:
         id: release
         uses: python-semantic-release/python-semantic-release@v9
         with:
+          build: ${{ vars.PYTHON_APP != 'true' }}
           github_token: ${{ steps.bot-token.outputs.token }}
           git_committer_email: ${{ steps.bot-credentials.outputs.bot-email }}
           git_committer_name: ${{ steps.bot-credentials.outputs.bot-name }}
@@ -88,13 +89,13 @@ jobs:
           NEXUS_READ_USER: ${{ secrets.NEXUS_READ_USER }}
           NEXUS_READ_PASS: ${{ secrets.NEXUS_READ_PASS }}
       - name: Upload Wheel Artifact
-        if: steps.release.outputs.released == 'true'
+        if: steps.release.outputs.released == 'true' && vars.PYTHON_APP != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: release-wheel
           path: ${{ github.workspace }}/dist/*.whl
       - name: Upload Dist Artifact
-        if: steps.release.outputs.released == 'true'
+        if: steps.release.outputs.released == 'true' && vars.PYTHON_APP != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: release-dist
@@ -105,7 +106,7 @@ jobs:
     needs: [ semantic-release ]
     runs-on: ubuntu-latest
 
-    if: needs.semantic-release.outputs.released == 'true'
+    if: needs.semantic-release.outputs.released == 'true' && vars.PYTHON_APP != 'true'
 
     steps:
       - name: Download Artifact
