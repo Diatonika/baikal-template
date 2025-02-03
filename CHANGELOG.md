@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.2.0 (2025-02-03)
+
+### Documentation
+
+- Add README.md
+  ([`bf26481`](https://github.com/Diatonika/baikal-template/commit/bf2648131883ce278e3117faf825d4ddf056cd09))
+
+### Features
+
+- **ci**: Support optional build and publish skip for standalone python apps
+  ([`09410b4`](https://github.com/Diatonika/baikal-template/commit/09410b41f81abffc9719615a417bd443779e64eb))
+
+
 ## v0.1.0 (2025-02-03)
 
 ### Bug Fixes
