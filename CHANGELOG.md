@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.3.4 (2025-02-04)
+
+### Bug Fixes
+
+- **build**: Fix installation of all dev dependencies for linter runs
+  ([`cd6ea60`](https://github.com/Diatonika/baikal-template/commit/cd6ea60aa493977aed268897ae8fdda245141a16))
+
+
 ## v0.3.3 (2025-02-04)
 
 ### Bug Fixes
