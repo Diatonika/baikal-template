@@ -46,7 +46,10 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     outputs:
+      prerelease: ${{ steps.release.outputs.is_prerelease }}
       released: ${{ steps.release.outputs.released }}
+      sha: ${{ steps.push.outputs.commit-sha }}
+      version: ${{ steps.release.outputs.version }}
 
     steps:
       - name: Generate Automation Access Token
@@ -76,18 +79,23 @@ jobs:
           github_token: ${{ steps.bot-token.outputs.token }}
           git_committer_email: ${{ steps.bot-credentials.outputs.bot-email }}
           git_committer_name: ${{ steps.bot-credentials.outputs.bot-name }}
+          tag: false
+          vcs_release: false
         env:
           NEXUS_READ_USER: ${{ secrets.NEXUS_READ_USER }}
           NEXUS_READ_PASS: ${{ secrets.NEXUS_READ_PASS }}
-      - name: Commit SemVer Changes
+      - name: Commit & Tag Semantic Version Changes
+        id: push
         if: steps.release.outputs.released == 'true'
-        uses: iarekylew00t/verified-bot-commit@v1
+        uses: ryancyq/github-signed-commit@v1
+        env:
+          GN_TOKEN: ${{ steps.bot-token.outputs.token }}
         with:
+          commit-message: ${{ steps.release.outputs.version }}
           files: |
             CHANGELOG.md
             pyproject.toml
-          message: ${{ steps.release.outputs.version }}
-          token: ${{ steps.bot-token.outputs.token }}
+          tag: ${{ steps.release.outputs.version }}
       - name: Upload Wheel Artifact
         if: steps.release.outputs.released == 'true' && vars.PYTHON_APP != 'true'
         uses: actions/upload-artifact@v4
@@ -100,6 +108,34 @@ jobs:
         with:
           name: release-dist
           path: ${{ github.workspace }}/dist/*.tar.gz
+
+  release:
+    name: Create GitHub Release
+    needs: [ semantic-release ]
+    runs-on: ubuntu-latest
+
+    if: needs.semantic-release.outputs.released == 'true'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.semantic-release.outputs.sha }}
+      - name: Download Build Artifacts
+        if: ${{ vars.PYTHON_APP != 'true' }}
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          path: dist
+      - name: Create Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: CHANGELOG.md
+          fail_on_unmatched_files: false
+          files: dist/*
+          generate_release_notes: false
+          prerelease: ${{ needs.semantic-release.outputs.prerelease }}
+          tag_name: ${{ needs.semantic-release.outputs.version }}
 
   publish:
     name: Publish to PyPI
