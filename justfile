@@ -8,7 +8,7 @@ do-format := "false"
 format-flags := if do-format == "false" { "--diff --color" } else { "" }
 
 nexus-read-user := env("NEXUS_READ_USER")
-nexus-read-pass := env("NEXUS_READ_USER")
+nexus-read-pass := env("NEXUS_READ_PASS")
 
 default:
     @just --list
