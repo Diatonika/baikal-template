@@ -72,6 +72,7 @@ jobs:
         uses: python-semantic-release/python-semantic-release@v9
         with:
           build: ${{ vars.PYTHON_APP != 'true' }}
+          commit: false
           github_token: ${{ steps.bot-token.outputs.token }}
           git_committer_email: ${{ steps.bot-credentials.outputs.bot-email }}
           git_committer_name: ${{ steps.bot-credentials.outputs.bot-name }}
