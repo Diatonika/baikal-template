@@ -2,8 +2,8 @@ set dotenv-load := true
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
 # Directories for Linter & Formatter
-source-dirs := "src"
 
+source-dirs := "src"
 nexus-read-user := env("NEXUS_READ_USER")
 nexus-read-pass := env("NEXUS_READ_PASS")
 
@@ -11,7 +11,7 @@ default:
     @just --list
 
 [group("setup")]
-init *sync-options: && (sync sync-options)
+init *install-options: && (install install-options)
     poetry config virtualenvs.in-project true --local
     poetry config http-basic.baikal-pypi {{ nexus-read-user }} {{ nexus-read-pass }} --local
 
@@ -19,39 +19,36 @@ init *sync-options: && (sync sync-options)
 init-dev: init
 
 [group("setup")]
+init-lint: (init "--only" "main,lint")
+
+[group("setup")]
 init-release: (init "--only" "main")
 
 [group("setup")]
-sync *options:
-    poetry sync {{ options }}
+build: init-release
+    poetry build
 
-[group("setup")]
-sync-dev: sync
+[group("misc")]
+install *options:
+    poetry install {{ options }}
 
-[group("setup")]
-sync-release: (sync "--only" "main")
-
-[group("setup")]
+[group("misc")]
 update *options:
     poetry update {{ options }}
 
-[group("setup")]
-build *options:
-    poetry build {{ options }}
-
 [group("lint")]
-lint-check: init-dev
+lint-check: init-lint
     poetry run ruff check {{ source-dirs }} --config pyproject.toml
     poetry run mypy {{ source-dirs }} --config-file pyproject.toml
 
 [group("lint")]
-lint-fix: init-dev
+lint-fix: init-lint
     poetry run ruff check --fix-only {{ source-dirs }}
 
 [group("format")]
-format-check: init-dev
+format-check: init-lint
     poetry run ruff format --diff {{ source-dirs }}
 
 [group("format")]
-format-fix: init-dev
+format-fix: init-lint
     poetry run ruff format {{ source-dirs }}
