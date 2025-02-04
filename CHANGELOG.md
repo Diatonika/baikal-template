@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.3.3 (2025-02-04)
+
+### Bug Fixes
+
+- **ci**: Add required permissions to create GitHub release
+  ([`f6fdcf3`](https://github.com/Diatonika/baikal-template/commit/f6fdcf3b65c19db996f45956bf3c50e0e5a20816))
+
+
 ## v0.3.2 (2025-02-04)
 
 ### Bug Fixes
