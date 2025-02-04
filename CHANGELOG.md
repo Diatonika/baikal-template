@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v0.3.2 (2025-02-04)
+
+### Bug Fixes
+
+- **ci**: Fix typo in GH_TOKEN
+  ([`524b6c3`](https://github.com/Diatonika/baikal-template/commit/524b6c3ff3d78a85420a61b291d4cac1b542eb0c))
+
+- **ci**: Fix unsigned release tags
+  ([`8cd4140`](https://github.com/Diatonika/baikal-template/commit/8cd4140cc83121cbc83d400e441556654d3417fc))
+
+
 ## v0.3.1 (2025-02-04)
 
 ### Bug Fixes
