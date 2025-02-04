@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v0.3.1 (2025-02-04)
+
+### Bug Fixes
+
+- **ci**: Disable automatic semver github commit
+  ([`e28945e`](https://github.com/Diatonika/baikal-template/commit/e28945efcabaf1ecc42a5e3015bf42256feb931f))
+
+- **ci**: Remove poetry.toml from commit glob
+  ([`487ef4d`](https://github.com/Diatonika/baikal-template/commit/487ef4d420d654fe660e36b720119893e5c4596e))
+
+
 ## v0.3.0 (2025-02-04)
 
 ### Bug Fixes
