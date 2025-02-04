@@ -26,24 +26,16 @@ jobs:
         run: pip install "poetry >= 2.0" "rust-just >= 1.0"
       - name: Dependencies Installation
         run: just init --only main,lint
-      - name: Mypy
-        id: mypy
-        run: just mypy
+      - name: Format
+        id: format
+        run: just format-check
         continue-on-error: true
-      - name: Flake
-        id: flake
-        run: just flake
-        continue-on-error: true
-      - name: iSort
-        id: isort
-        run: just isort
-        continue-on-error: true
-      - name: Black
-        id: black
-        run: just black
+      - name: Lint
+        id: lint
+        run: just lint-check
         continue-on-error: true
       - name: Failure Action
-        if: steps.mypy.outcome == 'failure' || steps.flake.outcome == 'failure' || steps.isort.outcome == 'failure' || steps.black.outcome == 'failure'
+        if: steps.format.outcome == 'failure' || steps.lint.outcome == 'failure'
         run: exit 1
 
   semantic-release:

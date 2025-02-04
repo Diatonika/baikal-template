@@ -1,11 +1,8 @@
 set dotenv-load := true
 set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
-# Directories for Linter
-linter-folders := "template"
-
-do-format := "false"
-format-flags := if do-format == "false" { "--diff --color" } else { "" }
+# Directories for Linter & Formatter
+source-dirs := "src"
 
 nexus-read-user := env("NEXUS_READ_USER")
 nexus-read-pass := env("NEXUS_READ_PASS")
@@ -43,24 +40,18 @@ build *options:
     poetry build {{ options }}
 
 [group("lint")]
-black: init-dev
-    poetry run black {{ linter-folders }} --config pyproject.toml {{ format-flags }}
+lint-check: init-dev
+    poetry run ruff check {{ source-dirs }} --config pyproject.toml
+    poetry run mypy {{ source-dirs }} --config-file pyproject.toml
 
 [group("lint")]
-flake: init-dev
-    poetry run flake8 {{ linter-folders }} --config .flake8
+lint-fix: init-dev
+    poetry run ruff check --fix-only {{ source-dirs }}
 
-[group("lint")]
-isort: init-dev
-    poetry run isort {{ linter-folders }} --settings pyproject.toml {{ format-flags }}
+[group("format")]
+format-check: init-dev
+    poetry run ruff format --diff {{ source-dirs }}
 
-[group("lint")]
-mypy: init-dev
-    poetry run mypy {{ linter-folders }} --config-file pyproject.toml
-
-[group("lint")]
-format:
-    just --set do-format true isort black
-
-[group("lint")]
-lint: mypy flake isort black
+[group("format")]
+format-fix: init-dev
+    poetry run ruff format {{ source-dirs }}

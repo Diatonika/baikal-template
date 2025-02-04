@@ -16,19 +16,19 @@ dependencies = [
 
 [tool.poetry]
 packages = [
-    { include = "template", to = "baikal" }
+    { include = "template", from = "src", to = "baikal" }
 ]
 
 [tool.semantic_release]
 tag_format = "{version}"
-version_toml = [ "pyproject.toml:project.version" ]
+version_toml = ["pyproject.toml:project.version"]
 
 allow_zero_version = true
 # When you are ready to release a stable version, set to true and run Python Semantic Release again.
 major_on_zero = false
 
 build_command = 'pip install "poetry >= 2.0" "rust-just >= 1.0" && just init-release && just build'
-build_command_env = [ "NEXUS_READ_USER", "NEXUS_READ_PASS" ]
+build_command_env = ["NEXUS_READ_USER", "NEXUS_READ_PASS"]
 
 [tool.semantic_release.branches.main]
 match = "main"
@@ -46,21 +46,21 @@ python-semantic-release = "^9.0"
 rust-just = "^1.0"
 
 [tool.poetry.group.lint.dependencies]
-black = "^24.0"
-flake8 = "^7.0"
-flake8-bugbear = ">= 24.0.0"
-isort = "^5.0"
+ruff = "^0.9"
 mypy = "^1.0"
 
 # Linter Tools
 
-[tool.black]
-target-version = ["py312"]
+[tool.ruff.lint]
+ignore = ["E203", "E501", "E701"]
+select = [
+    "E", "F", "W", "C90", "I", "UP", "ANN2", "ASYNC", "BLE", "FBT", "B", "A", "C4", "DTZ",
+    "EM", "ISC", "PYI", "PT", "RSE", "RET", "SLF", "SIM", "TID", "PTH", "PLE1", "TRY"
+]
 
-[tool.isort]
-lines_between_types = 1
-profile = "black"
-py_version = 312
+[tool.ruff.lint.isort]
+known-first-party = ["baikal.*"]
+lines-between-types = 1
 
 [tool.mypy]
 exclude = [".venv"]

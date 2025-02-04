@@ -22,7 +22,7 @@ Create the following repository GitHub Actions variables:
 
 ### Project Initialization ###
 
-Populate `linter-folders` variable inside `justfile` with directories for linter checks and run:
+Populate `source-dirs` variable inside `justfile` with directories for linter & formatters checks and run:
 
 ```bash
 just init-dev
@@ -32,11 +32,15 @@ just init-dev
 
 1. [Just Plugin](https://plugins.jetbrains.com/plugin/18658-just): IDE support for `justfile`.
 2. [MyPy Plugin](https://plugins.jetbrains.com/plugin/11086-mypy): IDE support for `MyPy` inspections.
+3. [Ruff Plugin](https://plugins.jetbrains.com/plugin/20574-ruff): IDE support for `Ruff` inspections.
 
 ### PyCharm Setup ###
 
 1. `CTRL + ALT + S` → `Mypy` → `Path To Config File`: `pyproject.toml`.
-2. `CTRL + ALT + S` → `Tools` → `Black` → `On Code Reformat`: `true`.
+2. `CTRL + ALT + S` → `Tools` → `Ruff`:
+   1. → `Run Ruff on Code Reformat`: `true`.
+   2. → `Use Ruff Format`: `true`.
+   3. → If not auto-detected, specify paths `.venv/Scripts/ruff.exe` and `pyproject.toml`.
 
 ### Semantic Release ###
 
