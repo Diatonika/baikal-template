@@ -115,6 +115,8 @@ jobs:
     runs-on: ubuntu-latest
 
     if: needs.semantic-release.outputs.released == 'true'
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
