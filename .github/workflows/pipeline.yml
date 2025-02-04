@@ -66,8 +66,6 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
           persist-credentials: false
-          ssh-key: ${{ secrets.AUTOMATION_SSH_PRIVATE }}
-          ssh-user: ${{ steps.bot-credentials.outputs.bot-name }}
           token: ${{ steps.bot-token.outputs.token }}
       - name: Invoke Semantic Release
         id: release
@@ -77,11 +75,18 @@ jobs:
           github_token: ${{ steps.bot-token.outputs.token }}
           git_committer_email: ${{ steps.bot-credentials.outputs.bot-email }}
           git_committer_name: ${{ steps.bot-credentials.outputs.bot-name }}
-          ssh_public_signing_key: ${{ secrets.AUTOMATION_SSH_PUBLIC }}
-          ssh_private_signing_key: ${{ secrets.AUTOMATION_SSH_PRIVATE }}
         env:
           NEXUS_READ_USER: ${{ secrets.NEXUS_READ_USER }}
           NEXUS_READ_PASS: ${{ secrets.NEXUS_READ_PASS }}
+      - name: Commit SemVer Changes
+        if: steps.release.outputs.released == 'true'
+        uses: iarekylew00t/verified-bot-commit@v1
+        with:
+          files: |
+            *.md
+            *.toml
+          message: ${{ steps.release.outputs.version }}
+          token: ${{ steps.bot-token.outputs.token }}
       - name: Upload Wheel Artifact
         if: steps.release.outputs.released == 'true' && vars.PYTHON_APP != 'true'
         uses: actions/upload-artifact@v4
