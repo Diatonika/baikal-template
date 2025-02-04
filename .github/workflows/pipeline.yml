@@ -66,6 +66,8 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
           persist-credentials: false
+          ssh-key: ${{ secrets.AUTOMATION_SSH_PRIVATE }}
+          ssh-user: ${{ steps.bot-credentials.outputs.bot-name }}
           token: ${{ steps.bot-token.outputs.token }}
       - name: Invoke Semantic Release
         id: release
