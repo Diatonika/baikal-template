@@ -1,6 +1,25 @@
 # CHANGELOG
 
 
+## v0.3.0 (2025-02-04)
+
+### Bug Fixes
+
+- **build**: Fix nexus password environment variable typo
+  ([`6f9a88d`](https://github.com/Diatonika/baikal-template/commit/6f9a88d8fef38542ba9c4a5fbd3b2db08ed4fdc5))
+
+- **ci**: Checkout repository using automation ssh key
+  ([`fdbe220`](https://github.com/Diatonika/baikal-template/commit/fdbe220c3c6822137c651c055a1a2e4cfd85eaab))
+
+- **ci**: Fix ssh signing using separate action
+  ([`bcffefa`](https://github.com/Diatonika/baikal-template/commit/bcffefadb51b2f170590b6cb5770121e059d294d))
+
+### Features
+
+- **style**: Replace linters and formatters with ruff
+  ([`1f6a5ad`](https://github.com/Diatonika/baikal-template/commit/1f6a5ad4a7de7c1c3f654073f713127bccc32ed8))
+
+
 ## v0.2.0 (2025-02-03)
 
 ### Documentation
