@@ -89,7 +89,7 @@ jobs:
         if: steps.release.outputs.released == 'true'
         uses: ryancyq/github-signed-commit@v1
         env:
-          GN_TOKEN: ${{ steps.bot-token.outputs.token }}
+          GH_TOKEN: ${{ steps.bot-token.outputs.token }}
         with:
           commit-message: ${{ steps.release.outputs.version }}
           files: |
