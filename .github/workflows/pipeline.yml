@@ -83,8 +83,8 @@ jobs:
         uses: iarekylew00t/verified-bot-commit@v1
         with:
           files: |
-            *.md
-            *.toml
+            CHANGELOG.md
+            pyproject.toml
           message: ${{ steps.release.outputs.version }}
           token: ${{ steps.bot-token.outputs.token }}
       - name: Upload Wheel Artifact
