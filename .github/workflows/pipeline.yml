@@ -134,7 +134,7 @@ jobs:
         with:
           changelog_file: CHANGELOG.md
           release_notes_file: RELEASE.md
-      - name: Create Releases
+      - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           body_path: RELEASE.md
