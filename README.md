@@ -14,11 +14,12 @@ Create the following repository GitHub Actions variables:
 2. Package release is automated
    by [Python Semantic Release GitHub Action](https://github.com/python-semantic-release/python-semantic-release).
 3. Current repository makes use
-   of [Generated Release Notes](https://github.com/marketplace/actions/release-changelog-builder) GitHub actions.
-4. When you are ready to release a stable version, set `pyproject.toml:major_on_zero` to `true` and run Python Semantic
-   Release again. This will increment the major version to `1.0.0`.
+   of [Generated Release Notes GitHub action](https://github.com/marketplace/actions/release-changelog-builder).
+4. When you are ready to release a stable version, set `pyproject.toml:major_on_zero` to `true` and run Semantic Release
+   again. This will increment the major version to `1.0.0`.
 
-As such, it is strongly recommended to adhere with Pull Request based workflow and Conventional Commits Specification.
+As such, it is strongly recommended to adhere with Pull Request based workflow (`main + develop`) and Conventional
+Commits Specification.
 
 > To further customize release notes style, uncomment `configuration: changelog-config.json` line in
 `.github/workflows/pipeline.yml`.
