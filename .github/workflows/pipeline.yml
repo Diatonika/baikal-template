@@ -74,7 +74,7 @@ jobs:
         id: release
         uses: python-semantic-release/python-semantic-release@v9
         with:
-          build: ${{ vars.PYTHON_APP != 'true' }}
+          build: ${{ vars.PYTHON_PUBLISH == 'true' }}
           commit: false
           github_token: ${{ steps.bot-token.outputs.token }}
           git_committer_email: ${{ steps.bot-credentials.outputs.bot-email }}
@@ -97,13 +97,13 @@ jobs:
             pyproject.toml
           tag: ${{ steps.release.outputs.version }}
       - name: Upload Wheel Artifact
-        if: steps.release.outputs.released == 'true' && vars.PYTHON_APP != 'true'
+        if: steps.release.outputs.released == 'true' && vars.PYTHON_PUBLISH == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: release-wheel
           path: ${{ github.workspace }}/dist/*.whl
       - name: Upload Dist Artifact
-        if: steps.release.outputs.released == 'true' && vars.PYTHON_APP != 'true'
+        if: steps.release.outputs.released == 'true' && vars.PYTHON_PUBLISH == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: release-dist
@@ -124,7 +124,7 @@ jobs:
         with:
           ref: ${{ needs.semantic-release.outputs.sha }}
       - name: Download Build Artifacts
-        if: ${{ vars.PYTHON_APP != 'true' }}
+        if: ${{ vars.PYTHON_PUBLISH == 'true' }}
         uses: actions/download-artifact@v4
         with:
           merge-multiple: true
@@ -149,7 +149,7 @@ jobs:
     needs: [ semantic-release ]
     runs-on: ubuntu-latest
 
-    if: needs.semantic-release.outputs.released == 'true' && vars.PYTHON_APP != 'true'
+    if: needs.semantic-release.outputs.released == 'true' && vars.PYTHON_PUBLISH == 'true'
 
     steps:
       - name: Download Artifact
