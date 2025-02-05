@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.4.1 (2025-02-05)
+
+### Bug Fixes
+
+- **style**: Disable as-imports forcing on separate lines
+  ([`a8b079e`](https://github.com/Diatonika/baikal-template/commit/a8b079e5a5384d12fe591463537ccaa5857a3d05))
+
+
 ## v0.4.0 (2025-02-05)
 
 ### Chores
