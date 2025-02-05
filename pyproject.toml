@@ -59,6 +59,7 @@ select = [
 ]
 
 [tool.ruff.lint.isort]
+combine-as-imports = true
 known-first-party = ["baikal.*"]
 lines-between-types = 1
 
