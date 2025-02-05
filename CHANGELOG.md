@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.3.5 (2025-02-05)
+
+### Bug Fixes
+
+- **ci**: Extract latest release notes from CHANGELOG.md
+  ([`16d21cd`](https://github.com/Diatonika/baikal-template/commit/16d21cda355327a87b3a35a6cfcc70125777a3e8))
+
+
 ## v0.3.4 (2025-02-04)
 
 ### Bug Fixes
