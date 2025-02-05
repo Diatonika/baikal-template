@@ -1,6 +1,24 @@
 # CHANGELOG
 
 
+## v0.4.0 (2025-02-05)
+
+### Chores
+
+- **ci**: Fix pipeline.yml typo in release job
+  ([`445701c`](https://github.com/Diatonika/baikal-template/commit/445701c4d1ce2254e8a7b63b39514adebcc112ce))
+
+### Features
+
+- **docs**: Support customizable automatic release notes generation
+  ([`68df72d`](https://github.com/Diatonika/baikal-template/commit/68df72d567f8da2a7ab7eb3b961c0e95be539abc))
+
+### Refactoring
+
+- Change PYTHON_APP to PYTHON_PUBLISH to clarify flag intention
+  ([`d23efad`](https://github.com/Diatonika/baikal-template/commit/d23efad26947832b978e291947b1a8de8c60f4bc))
+
+
 ## v0.3.5 (2025-02-05)
 
 ### Bug Fixes
