@@ -7,6 +7,23 @@ Create the following repository GitHub Actions variables:
 1. `PYTHON_VERSION`: Python version to set up in `lint` workflow environment.
 2. `PYTHON_PUBLISH`: Set to `true` when project is intended to be built as python package and published to PyPI.
 
+### Semantic Versioning ###
+
+1. Your commits messages must
+   follow [Conventional Commits Specification](https://www.conventionalcommits.org/en/v1.0.0/).
+2. Package release is automated
+   by [Python Semantic Release GitHub Action](https://github.com/python-semantic-release/python-semantic-release).
+3. Current repository makes use
+   of [Generated Release Notes GitHub action](https://github.com/marketplace/actions/release-changelog-builder).
+4. When you are ready to release a stable version, set `pyproject.toml:major_on_zero` to `true` and run Semantic Release
+   again. This will increment the major version to `1.0.0`.
+
+As such, it is strongly recommended to adhere with Pull Request based workflow (`main + develop`) and Conventional
+Commits Specification.
+
+> To further customize release notes style, uncomment `configuration: changelog-config.json` line in
+`.github/workflows/pipeline.yml`.
+
 ## Project Setup ##
 
 ### Tools ###
@@ -38,15 +55,6 @@ just init-dev
 
 1. `CTRL + ALT + S` → `Mypy` → `Path To Config File`: `pyproject.toml`.
 2. `CTRL + ALT + S` → `Tools` → `Ruff`:
-   1. → `Run Ruff on Code Reformat`: `true`.
-   2. → `Use Ruff Format`: `true`.
-   3. → If not auto-detected, specify paths `.venv/Scripts/ruff.exe` and `pyproject.toml`.
-
-### Semantic Release ###
-
-1. Your commits messages must
-   follow [Conventional Commits Specification](https://www.conventionalcommits.org/en/v1.0.0/).
-2. Package release is automated
-   by [Python Semantic Release GitHub Action](https://github.com/python-semantic-release/python-semantic-release).
-3. When you are ready to release a stable version, set `pyproject.toml:major_on_zero` to `true` and run Python Semantic
-   Release again. This will increment the major version to `1.0.0`.
+    1. → `Run Ruff on Code Reformat`: `true`.
+    2. → `Use Ruff Format`: `true`.
+    3. → If not auto-detected, specify paths `.venv/Scripts/ruff.exe` and `pyproject.toml`.

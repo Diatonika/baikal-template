@@ -130,10 +130,15 @@ jobs:
           merge-multiple: true
           path: dist
       - name: Create Release Notes
-        uses: ffurrer2/extract-release-notes@v2
+        uses: mikepenz/release-changelog-builder-action@v5
         with:
-          changelog_file: CHANGELOG.md
-          release_notes_file: RELEASE.md
+          # https://github.com/marketplace/actions/release-changelog-builder
+          # Uncomment the following line and populate configuration file with relevant configuration.
+          # configuration: changelog-config.json
+          failOnError: true
+          outputFile: RELEASE.md
+          token: ${{ github.token }}
+          toTag: ${{ needs.semantic-release.outputs.version }}
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
