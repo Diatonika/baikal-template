@@ -8,7 +8,7 @@ description = "Baikal Template Repository"
 name = "baikal-template"
 version = "0.4.1"
 readme = "README.md"
-requires-python = ">= 3.12"
+requires-python = ">= 3.12, < 4.0"
 
 dependencies = [
     "dynaconf (>= 3.0, < 4.0)",
@@ -42,6 +42,7 @@ url = "https://pypi.fury.io/zitrasa/"
 
 [tool.poetry.group.dev.dependencies]
 click = "^8.0"
+poetry-plugin-shell = "^1.0"
 python-semantic-release = "^9.0"
 rust-just = "^1.0"
 
