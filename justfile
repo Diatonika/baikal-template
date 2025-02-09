@@ -38,9 +38,8 @@ update *options:
 
 [group("lint")]
 lint-check: init-lint
-    poetry shell
-    ruff check {{ source-dirs }} --config pyproject.toml
-    dmypy run --export-types -- {{ source-dirs }} --config-file pyproject.toml --cache-fine-grained
+    poetry run -- ruff check {{ source-dirs }} --config pyproject.toml
+    poetry run -- dmypy run --export-types -- {{ source-dirs }} --config-file pyproject.toml --cache-fine-grained
 
 [group("lint")]
 lint-fix: init-lint

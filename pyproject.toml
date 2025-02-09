@@ -42,7 +42,6 @@ url = "https://pypi.fury.io/zitrasa/"
 
 [tool.poetry.group.dev.dependencies]
 click = "^8.0"
-poetry-plugin-shell = "^1.0"
 python-semantic-release = "^9.0"
 rust-just = "^1.0"
 
