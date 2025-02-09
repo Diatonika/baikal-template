@@ -1,6 +1,27 @@
 # CHANGELOG
 
 
+## v0.5.0 (2025-02-09)
+
+### Bug Fixes
+
+- **style**: Fix pseudo-argument parsing in poetry run
+  ([`c8480cd`](https://github.com/Diatonika/baikal-template/commit/c8480cd3bba9999d3f9e9f473f360ff444b94578))
+
+### Chores
+
+- **build**: Fix dependencies order in lint section
+  ([`4541e6e`](https://github.com/Diatonika/baikal-template/commit/4541e6e6a8de4bfec2dbec7fb6c37e1d6469e85a))
+
+- **build**: Fix newlines in .gitignore
+  ([`e68efe8`](https://github.com/Diatonika/baikal-template/commit/e68efe82b983c9839fdd4fd0445abbd370d5573e))
+
+### Features
+
+- **style**: Replace mypy CLI to dmypy daemon
+  ([`f3f0747`](https://github.com/Diatonika/baikal-template/commit/f3f07473547b95378be0afc4df95683c47c62749))
+
+
 ## v0.4.1 (2025-02-05)
 
 ### Bug Fixes
