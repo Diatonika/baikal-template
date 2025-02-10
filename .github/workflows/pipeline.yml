@@ -25,7 +25,7 @@ jobs:
       - name: Environment Preparation
         run: pip install "poetry >= 2.0" "rust-just >= 1.0"
       - name: Dependencies Installation
-        run: just init --only main,lint
+        run: just init-lint
       - name: Format
         id: format
         run: just format-check
