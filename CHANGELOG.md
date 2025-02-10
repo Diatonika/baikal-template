@@ -1,6 +1,25 @@
 # CHANGELOG
 
 
+## v0.6.0 (2025-02-10)
+
+### Chores
+
+- **ci**: Transition to built-in just init-lint
+  ([`ebbae5e`](https://github.com/Diatonika/baikal-template/commit/ebbae5e0af639380136ca22cd5ad60ba8e5ff423))
+
+- **style**: Sort and prettify pyproject.toml
+  ([`66eaa68`](https://github.com/Diatonika/baikal-template/commit/66eaa689571ea0f2347c775f68b644d274a4f6fe))
+
+### Features
+
+- **ci**: Support test stage on ci
+  ([`3ca8bd3`](https://github.com/Diatonika/baikal-template/commit/3ca8bd36b3e406d240e19b1bc209123b5c049480))
+
+- **test**: Support pytest
+  ([`f25074e`](https://github.com/Diatonika/baikal-template/commit/f25074e3a0f8b203fbc747966de489ac76cf3576))
+
+
 ## v0.5.0 (2025-02-09)
 
 ### Bug Fixes
