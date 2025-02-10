@@ -19,6 +19,8 @@ packages = [
     { include = "template", from = "src", to = "baikal" }
 ]
 
+# Semantic Release Settings
+
 [tool.semantic_release]
 tag_format = "{version}"
 version_toml = ["pyproject.toml:project.version"]
@@ -35,10 +37,14 @@ match = "main"
 prerelease_token = "rc"
 prerelease = false
 
+# Private PyPI Source
+
 [[tool.poetry.source]]
 name = "baikal-pypi"
 priority = "explicit"
 url = "https://pypi.fury.io/zitrasa/"
+
+# Dependency Groups
 
 [tool.poetry.group.dev.dependencies]
 click = "^8.0"
