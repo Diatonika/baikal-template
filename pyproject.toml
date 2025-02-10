@@ -49,6 +49,10 @@ rust-just = "^1.0"
 mypy = "^1.0"
 ruff = "^0.9"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^8.0"
+pytest-datadir = "^1.0"
+
 # Linter Tools
 
 [tool.ruff.lint]
@@ -71,3 +75,9 @@ strict = true
 [[tool.mypy.overrides]]
 module = "dynaconf"
 ignore_missing_imports = true
+
+# Testing Tools
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib", "--tb=short"]
+testpaths = ["tests"]

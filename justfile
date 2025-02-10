@@ -3,7 +3,7 @@ set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
 
 # Directories for Linter & Formatter
 
-source-dirs := "src"
+source-dirs := "src tests"
 nexus-read-user := env("NEXUS_READ_USER")
 nexus-read-pass := env("NEXUS_READ_PASS")
 
@@ -23,6 +23,9 @@ init-lint: (init "--only" "main,lint")
 
 [group("setup")]
 init-release: (init "--only" "main")
+
+[group("setup")]
+init-test: (init "--only" "main,test")
 
 [group("setup")]
 build: init-release
@@ -52,3 +55,7 @@ format-check: init-lint
 [group("format")]
 format-fix: init-lint
     poetry run ruff format {{ source-dirs }}
+
+[group("test")]
+test-all: init-test
+    poetry run pytest
