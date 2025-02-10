@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.6.1 (2025-02-10)
+
+### Bug Fixes
+
+- **style**: Add tests dependencies into lint requisites
+  ([`0d99e5d`](https://github.com/Diatonika/baikal-template/commit/0d99e5d6bd1114cd4ddac67435710dae588317f3))
+
+
 ## v0.6.0 (2025-02-10)
 
 ### Chores
