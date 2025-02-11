@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.6.2 (2025-02-11)
+
+### Bug Fixes
+
+- **build**: Fix repository structure for namespace package usage
+  ([`0d29315`](https://github.com/Diatonika/baikal-template/commit/0d29315431778433e815e7cf9366b4eeaf9b6ad4))
+
+
 ## v0.6.1 (2025-02-10)
 
 ### Bug Fixes
