@@ -16,7 +16,7 @@ dependencies = [
 
 [tool.poetry]
 packages = [
-    { include = "template", from = "src", to = "baikal" }
+    { include = "baikal/template", from = "src", to = "baikal" }
 ]
 
 # Semantic Release Settings
