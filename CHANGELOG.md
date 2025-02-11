@@ -1,12 +1,30 @@
 # CHANGELOG
 
 
+## v0.6.4 (2025-02-11)
+
+### Bug Fixes
+
+- **style**: Fix mypy duplicated source code detection
+  ([`df956ce`](https://github.com/Diatonika/baikal-template/commit/df956cee58be435a3c4eb2c68ecc8ae43ac058c4))
+
+### Chores
+
+- **style**: Add newline into tool.poetry section
+  ([`bfd68bc`](https://github.com/Diatonika/baikal-template/commit/bfd68bc42a8faea775d3d5aa6a64ddb9d8da34f3))
+
+
 ## v0.6.3 (2025-02-11)
 
 ### Bug Fixes
 
 - **build**: Fix baikal namespace package structure
   ([`bf1adbd`](https://github.com/Diatonika/baikal-template/commit/bf1adbd6d1e4030e6e8158988a45239ca352c529))
+
+### Chores
+
+- **style**: Add newline into tool.poetry section
+  ([`6469498`](https://github.com/Diatonika/baikal-template/commit/6469498f48195684375f227f1bd28816bee3abd4))
 
 
 ## v0.6.2 (2025-02-11)
