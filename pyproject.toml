@@ -18,6 +18,7 @@ dependencies = [
 exclude = [
     "src/baikal/*.py"  # Explicitly exclude all python files from baikal namespace package
 ]
+
 packages = [
     { include = "baikal", from = "src" }
 ]
