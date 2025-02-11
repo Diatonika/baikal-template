@@ -15,8 +15,11 @@ dependencies = [
 ]
 
 [tool.poetry]
+exclude = [
+    "src/baikal/*.py"  # Explicitly exclude all python files from baikal namespace package
+]
 packages = [
-    { include = "baikal/template", from = "src", to = "baikal" }
+    { include = "baikal", from = "src" }
 ]
 
 # Semantic Release Settings
