@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.6.3 (2025-02-11)
+
+### Bug Fixes
+
+- **build**: Fix baikal namespace package structure
+  ([`bf1adbd`](https://github.com/Diatonika/baikal-template/commit/bf1adbd6d1e4030e6e8158988a45239ca352c529))
+
+
 ## v0.6.2 (2025-02-11)
 
 ### Bug Fixes
