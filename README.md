@@ -39,6 +39,8 @@ Commits Specification.
 
 ### Project Initialization ###
 
+Specify project name in `pyproject.toml` `[project]` section.
+
 Populate `source-dirs` variable inside `justfile` with directories for linter & formatters checks and run:
 
 ```bash
