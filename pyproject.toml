@@ -74,7 +74,7 @@ select = [
 
 [tool.ruff.lint.isort]
 combine-as-imports = true
-known-first-party = ["baikal.*"]
+known-first-party = ["baikal.*", "tests.*"]
 lines-between-types = 1
 
 [tool.mypy]
