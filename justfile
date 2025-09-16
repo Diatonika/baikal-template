@@ -11,7 +11,7 @@ default:
     @just --list
 
 [group("setup")]
-init *sync-options: && (sync sync-options)
+init *install-options: && (install install-options)
     poetry config virtualenvs.in-project true --local
     poetry config http-basic.baikal-pypi {{ nexus-read-user }} {{ nexus-read-pass }} --local
 
@@ -32,8 +32,8 @@ build: init-release
     poetry build
 
 [group("misc")]
-sync *options:
-    poetry sync {{ options }}
+install *options:
+    poetry install {{ options }}
 
 [group("misc")]
 update *options:
