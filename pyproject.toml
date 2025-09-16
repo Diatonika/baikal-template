@@ -78,7 +78,6 @@ lines-between-types = 1
 exclude = [".venv"]
 explicit_package_bases = true
 mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
-plugins = ["pydantic.mypy"]
 python_version = "3.12"
 strict = true
 
